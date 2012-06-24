@@ -1,4 +1,27 @@
-Using closures
+Javascript Conventions
+======================
+
+`==` vs `===`
+---
+
+```javascript
+1 == "1"; // true
+false == " \n\t "; // true
+0==false; // true
+new Array([],null,undefined,null) == ",,,"; //true
+```
+
+Fixed with `===`:
+
+```javascript
+1 === "1"; // false
+false === " \n\t "; // false
+0===false; // false
+new Array([],null,undefined,null) == ",,,"; // false
+```
+
+Avoiding globals
+---
 
 Before:
 
@@ -66,6 +89,34 @@ window.day = "";
 })();
 ```
 
+Using closures
+---
+
+Before:
+
+```javascript
+function adder(x, y) {
+  return x + y;
+}
+alert(adder(2, 3)); // 5
+alert(adder(2, 5)); // 7
+```
+
+After (with closures):
+
+```
+function makeAdder(x) {
+  return function(y) {
+    return x + y;
+  };
+}
+
+var add2 = makeAdder(2);
+
+alert(add2(3)); // 5
+alert(add2(5)); // 7
+```
+
 Inline HTML
 ---
 
@@ -99,3 +150,4 @@ var widget = {
 }
 var html = new EJS({url: 'widget.ejs'}).render(data);
 ```
+
