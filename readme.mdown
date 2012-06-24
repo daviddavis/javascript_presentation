@@ -57,7 +57,7 @@ case 6:
 
 After (with anonymous function):
 
-```
+```javascript
 window.day = "";
 (function() {
   var date = new Date(),
@@ -104,7 +104,7 @@ alert(adder(2, 5)); // 7
 
 After (with closures):
 
-```
+```javascript
 function makeAdder(x) {
   return function(y) {
     return x + y;
