@@ -151,3 +151,50 @@ var widget = {
 var html = new EJS({url: 'widget.ejs'}).render(data);
 ```
 
+Inline Javascript vs. Unobstructive Javascript
+---
+
+Before:
+
+```html
+<button class="alert-me" onClick="alert('42!')">
+```
+
+After:
+
+```javascript
+$("button.alert-me").live("click", function() {
+    alert("42!");
+  });
+```
+
+Javascript's `this`
+---
+
+```
+function HotDog() {
+    this.condiments = "mustard, ketchup";
+    this.getCondiments = function() {
+      alert(this.condiments);
+    }
+}
+var myHotDog = new HotDog();
+// Call the getCondiments function in 3 seconds
+setTimeout(myHotDog.getCondiments, 3000); // error
+```
+
+Fixed:
+
+```javascript
+var myHotDog = new HotDog();
+setTimeout(function() {
+    myHotDog.getCondiments();
+}, 3000);
+```
+
+Fixed (using jQuery to redefine `this`):
+
+```javascript
+// Call the getCondiments function in 3 seconds
+setTimeout($.proxy(myHotDog.getCondiments, myHotDog), 3000); // no error
+```
