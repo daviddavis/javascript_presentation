@@ -1,0 +1,101 @@
+Using closures
+
+Before:
+
+```javascript
+var date = new Date(),
+    number = date.getDay(),
+    day = "";
+switch (number)
+{
+case 0:
+  day = "Sunday";
+  break;
+case 1:
+  day = "Monday";
+  break;
+case 2:
+  day = "Tuesday";
+  break;
+case 3:
+  day = "Wednesday";
+  break;
+case 4:
+  day = "Thursday";
+  break;
+case 5:
+  day = "Friday";
+  break;
+case 6:
+  day = "Saturday";
+  break;
+}
+```
+
+After (with anonymous function):
+
+```
+window.day = "";
+(function() {
+  var date = new Date(),
+      number = date.getDay();
+  switch (number)
+  {
+  case 0:
+    window.day = "Sunday";
+    break;
+  case 1:
+    window.day = "Monday";
+    break;
+  case 2:
+    window.day = "Tuesday";
+    break;
+  case 3:
+    window.day = "Wednesday";
+    break;
+  case 4:
+    window.day = "Thursday";
+    break;
+  case 5:
+    window.day = "Friday";
+    break;
+  case 6:
+    window.day = "Saturday";
+    break;
+  }
+})();
+```
+
+Inline HTML
+---
+
+Before:
+
+```javascript
+var widgetStructure = '<div id=' + widgetID + '>' +
+	                       '<h2 id="' + widgetTitleID + '">' + widgetTitle + '</h2>' +
+	                        '<div id="' + widgetContentID + '" style="' + widgetContentStyles + '">' +
+	                            (function() {
+	                                var paras = '';
+	                                for (var i = 0; i < paraItems.length; ++i) {
+	                                    paras += '<p>' + paraItems[i] + '</p>';
+	                                }
+	                                return paras;
+	                            })() +
+	                        '</div>' +
+	                    '</div>';
+```
+
+After:
+
+```
+var widget = {
+  id: widgetId,
+  id_title: widgetTitleID
+  title: widgetTitle,
+  content_id: widgetContentID, 
+  content_styles: widgetContentStyles,
+  paragraphs:  paraItems
+}
+var html = new EJS({url: 'widget.ejs'}).render(data);
+```
