@@ -1,0 +1,25 @@
+- Use var when declaring new variables
+- Use semicolons at the end of each line
+- Don't start variables/functions with capital letters unless they are constructors
+
+- Put Javascript code in a separate file(s)
+- Put YOUR javascript files in app/assets/javascripts
+- You can put external javascript files in vendor/assets/javascripts
+- Bundle them together
+  - Using `//= require jQuery` in Rails 3.1+.
+  - In Rails 2.x and 3.0, you can use :cache.
+- Inside app/assets, you can use an MVC/MVR structure
+
+- Avoid globals
+  - Wrap code in anonymous functions
+  - Create objects
+  - Extend jQuery
+  
+- DRY
+  - Use closures
+- Avoid inline HTML in Javascript
+- Avoid browser detection
+
+- The `this` keyword points to the current object.
+- Sometimes it doesn't point to what you might expect
+- You can also redefine this
