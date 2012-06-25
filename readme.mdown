@@ -207,3 +207,16 @@ Fixed (using jQuery to redefine `this`):
 // Call the getCondiments function in 3 seconds
 setTimeout($.proxy(myHotDog.getCondiments, myHotDog), 3000); // no error
 ```
+
+Self
+---
+
+Use self as a way to point to the current object and not redefine this
+
+```javascript
+$(".add-button").click(function (e) {
+  // this points to the HTML element
+  // so I'll define self to point to the jQuery obj
+  var self = $(e.target);
+});
+```
