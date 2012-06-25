@@ -17,7 +17,7 @@ Fixed with `===`:
 1 === "1"; // false
 false === " \n\t "; // false
 0===false; // false
-new Array([],null,undefined,null) == ",,,"; // false
+new Array([],null,undefined,null) === ",,,"; // false
 ```
 
 Avoiding globals
