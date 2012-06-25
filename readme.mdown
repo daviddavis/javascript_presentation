@@ -139,7 +139,16 @@ var widgetStructure = '<div id=' + widgetID + '>' +
 
 After:
 
+```javascript
+<div id="widget-template" style="display-none">
+...
+</div>
+
+var new_widget = $("#widget-template").clone();
 ```
+
+
+```javascript
 var widget = {
   id: widgetId,
   id_title: widgetTitleID
@@ -171,7 +180,7 @@ $("button.alert-me").live("click", function() {
 Javascript's `this`
 ---
 
-```
+```javascript
 function HotDog() {
     this.condiments = "mustard, ketchup";
     this.getCondiments = function() {
